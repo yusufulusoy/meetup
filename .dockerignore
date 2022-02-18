@@ -1,0 +1,7 @@
+.*
+**/*.pyc
+*.sqlite
+media
+node_modules
+static
+venv
