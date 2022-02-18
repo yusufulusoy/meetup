@@ -12,6 +12,7 @@
 !.github
 !.gitignore
 !.gqlconfig
+!.isort.cfg
 !.npmrc
 !.nvmrc
 !.plop

@@ -8,9 +8,9 @@ RUN apt-get -y update \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-COPY requirements.txt /app/
+COPY requirements_dev.txt /app/
 WORKDIR /app
-RUN pip install -r requirements.txt
+RUN pip install -r requirements_dev.txt
 
 ### Final image
 FROM python:3.10-slim
@@ -48,9 +48,9 @@ ARG STATIC_URL
 ENV STATIC_URL ${STATIC_URL:-/static/}
 RUN SECRET_KEY=dummy STATIC_URL=${STATIC_URL} python3 manage.py collectstatic --no-input
 
-RUN python3 manage.py makemigrations --no-input
-RUN python3 manage.py migrate --no-input
-RUN python3 manage.py createsu
+# RUN python3 manage.py makemigrations --no-input
+# RUN python3 manage.py migrate --no-input
+# RUN python3 manage.py createsu
 
 EXPOSE ${API_WEB_PORT}
 ENV PYTHONUNBUFFERED 1
